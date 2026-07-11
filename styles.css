@@ -1,4 +1,4 @@
-        * {
+* {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -121,6 +121,90 @@
         .nav-links a:hover {
             color: #fff;
             background: #222;
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            position: relative;
+            z-index: 1001;
+            margin-right: 1.5rem;
+        }
+
+        .lang-current {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: #fff;
+            padding: 0.5rem 0.9rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+        }
+
+        .lang-current:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #fff;
+        }
+
+        .lang-flag {
+            font-size: 1.1rem;
+            line-height: 1;
+        }
+
+        .lang-dropdown {
+            list-style: none;
+            position: absolute;
+            top: calc(100% + 0.6rem);
+            right: 0;
+            background: rgba(0, 0, 0, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            min-width: 180px;
+            padding: 0.5rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.25s ease;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        .lang-dropdown.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .lang-dropdown li {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            padding: 0.65rem 1.1rem;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .lang-dropdown li::before {
+            content: attr(data-flag);
+            font-size: 1.1rem;
+        }
+
+        .lang-dropdown li:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .lang-dropdown li.active {
+            color: #fff;
+            font-weight: 700;
+            background: rgba(255, 255, 255, 0.08);
         }
 
         .burger {
@@ -1048,4 +1132,37 @@
                 width: 100px;
                 max-width: 100px;
             }
+
+            .lang-switcher {
+                margin-right: 0.8rem;
+            }
+
+            .lang-current {
+                padding: 0.4rem 0.7rem;
+                font-size: 0.75rem;
+            }
+
+            .lang-dropdown {
+                min-width: 160px;
+            }
+        }
+
+        /* Arabic (RTL) adjustments */
+        html[dir="rtl"] .nav-content {
+            justify-content: flex-start;
+        }
+
+        html[dir="rtl"] .logo {
+            left: auto;
+            right: 2rem;
+        }
+
+        html[dir="rtl"] .lang-dropdown {
+            right: auto;
+            left: 0;
+        }
+
+        html[dir="rtl"] .about-text,
+        html[dir="rtl"] .contact-info {
+            text-align: right;
         }
